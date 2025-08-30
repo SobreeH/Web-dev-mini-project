@@ -1,6 +1,39 @@
 <?php
 include 'db.php';
 
+// add user staetement
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    if ($conn ->select_db("bookmarker") == "TRUE") {
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+    $email = $_POST['email'];
+
+    $stmt = $conn->prepare("INSERT INTO users (username, password, email) VALUES (?, ?, ?)");
+    $stmt->bind_param("sss", $username, $password, $email);
+
+    if ($stmt->execute()) {
+        echo "New record created successfully";
+        header("Location: login.php"); // Redirect to login page after successful registration
+        exit();
+    } else {
+        echo "Error: " . $stmt->error;
+    }
+
+    $stmt->close();
+
+    // create reading-list table for new user
+    $tableName = $username . "_reading_list";
+    $createTableReadingList = "CREATE TABLE IF NOT EXISTS $tableName (
+        entry_id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+        book_id INT(6) UNSIGNED,
+        status VARCHAR(20),
+        added_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+        FOREIGN KEY (book_id) REFERENCES books(book_id)
+    )";
+
+}
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -26,9 +59,13 @@ include 'db.php';
                 <!-- Password field -->
                 <div class="mb-3">
                     <label for="password" class="form-label">Password</label>
-                    <input type="password" name="password" class="form-control" placeholder="Password" required>
+                    <input type="password" name="password" class="form-control" placeholder="Password" minlength="6" required>
                 </div>
 
+                <div>
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" name="email" class="form-control" placeholder="Email" required>
+                </div>
                 <!-- Register button -->
                 <button type="submit" class="btn btn-primary">Register</button>
             </form>
