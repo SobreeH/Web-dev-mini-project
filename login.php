@@ -15,7 +15,7 @@ include 'db.php';
         <!-- A single block to contain the form, title, and link -->
         <div class="text-center">
             <h2>Login</h2>
-            <form action="login.php" method="POST">
+            <form action="main.php" method="POST">
                 <!-- Username field -->
                 <div class="mb-3">
                     <label for="username" class="form-label">Username</label>
