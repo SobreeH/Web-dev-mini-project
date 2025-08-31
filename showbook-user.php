@@ -2,7 +2,7 @@
     include "db.php";
     $dbname = "bookmarker";
     if($conn -> select_db($dbname)){
-        echo "Darabase".$dbname."selected successfully!<br>";
+        echo "Database ".$dbname." selected successfully!<br>";
     }
     else{
         echo "Error selecting database:".$conn ->error;
@@ -15,11 +15,10 @@
         echo "<table border='1' align='center' cellpadding='10'>";
         echo "<tr>
         <td>title</td>
-        <td>password</td>
-        <td>email</td>
-        <td>register_date</td>
-        <td>edit</td>
-        <td>delete</td>        
+        <td>author</td>
+        <td>genre</td>
+        <td>publication year</td>
+
         </tr>";
         while($row = $result -> fetch_assoc()){
             $title = "&title=".$row["title"];
@@ -34,21 +33,16 @@
         echo "<td>"  .$row["genre"] .   "</td> ";  
         echo "<td>"  .$row["publication_year"] .    "</td> ";
         
-        //แก้ไข
-        echo "<td><a href='formeditbook.php?".$title,$author,$genre,$publication_year,$book_id."'>edit</a></td> ";
 
-        //ลบตาราง
-        echo "<td><a href='deletebook.php?" .$book_id. "'>delete</a></td>";
         echo "</tr>";
 
         
         }
          echo "</table>";
-        echo "<center><a href='book.php'><br>[Insert]</a></center>";
+        echo "<center><a href='user-page.php'><br>[Back]</a></center>";
     }
      else {
     echo "<center>ไม่มีข้อมูล</center>";
-    echo "<center><a href='studenttt.php'><br>[Insert]</a></center>";
     }
 
 ?>

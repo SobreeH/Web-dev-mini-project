@@ -43,9 +43,10 @@
 
         
         }
-        
-        
         echo "</table>";
+
+                echo "<center><a href='admin-page.php'><br>[Back]</a></center>";
+
     }
 
 ?>

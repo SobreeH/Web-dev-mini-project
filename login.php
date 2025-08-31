@@ -1,7 +1,12 @@
 <?php
 include 'db.php';
 session_start();
-
+if (isset($_GET['error'])) {
+                // Display the error message in a styled alert box
+                echo '<div class="alert alert-danger" role="alert">';
+                echo htmlspecialchars($_GET['error']);
+                echo '</div>';
+            }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -16,7 +21,7 @@ session_start();
         <!-- A single block to contain the form, title, and link -->
         <div class="text-center">
             <h2>Login</h2>
-            <form action="login.php" method="POST">
+            <form action="login.php" method="post">
                 <!-- Username field -->
                 <div class="mb-3">
                     <label for="username" class="form-label">Username</label>
@@ -30,7 +35,7 @@ session_start();
                 </div>
 
                 <!-- Login button -->
-                <button type="submit" name="login" class="btn btn-primary">Login</button>
+                <input type="submit" name="login" class="btn btn-primary" value="Login">
             </form>
 
             <!-- "Register here" link -->
@@ -42,14 +47,17 @@ session_start();
 </html>
 
 <?php
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
 if (isset($_POST["login"])) {
-    $username = $_POST ["username"];
-    $password = $_POST ["password"];
+    $_SESSION['username'] = $_POST['username'];
+    $_SESSION['password'] = $_POST['password'];
     
+    echo $_SESSION['username'];
+    echo $_SESSION['password'];
+
     header("Location: authenticate-user.php");
     exit();
 
 }
-}
+
 ?>

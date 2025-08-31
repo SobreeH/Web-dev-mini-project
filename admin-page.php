@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,12 +15,19 @@
         <div class="container px-4 px-lg-5 text-center">
             <h1 class="mb-1">Welcome to the BookMARKER pre-alpha</h1>
             <h3 class="mb-5"><em> </em></h3>
-            <a class="btn btn-primary btn-xl" href="showbook.php" >Book table</a>
+            <a class="btn btn-primary btn-xl" href="showbook-admin.php" >Book table</a>
             <a class="btn btn-primary btn-xl" href="showuser.php" >User table</a>
-            <a class="btn btn-primary btn-xl" href="login.php" >Logout</a>
-
+        <form action="admin-page.php" method="post">
+        <input type="submit" name="logout" value="Logout" ;>
+        </form>
         </div>
 
     </header>
 </body>
 </html>
+<?php
+if (isset($_POST["logout"])) {
+    session_destroy();
+    header("Location: login.php");
+    exit();
+}
