@@ -34,7 +34,7 @@ if ($conn->select_db("bookmarker")) {
     // sql to create table books
     $createTableBooks = "CREATE TABLE IF NOT EXISTS books (
         book_id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-        title VARCHAR(100) NOT NULL UNIQUE,
+        title VARCHAR(100) NOT NULL,
         author VARCHAR(100),
         genre VARCHAR(50),
         publication_year INT(4)
@@ -49,7 +49,26 @@ if ($conn->select_db("bookmarker")) {
       }
     echo "<br>";
     
-    // add sample books
+    // sql to create table reading_list
+    $createTableReadingList = "CREATE TABLE IF NOT EXISTS reading_list (
+        user_id INT(6) UNSIGNED,
+        book_id INT(6) UNSIGNED,
+        status VARCHAR(20),
+        added_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+        PRIMARY KEY (user_id, book_id),
+        FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE,
+        FOREIGN KEY (book_id) REFERENCES books(book_id) ON DELETE CASCADE
+        )";
+    
+    // create table reading_list
+    if ($conn->query($createTableReadingList) === TRUE) {
+      echo "Table reading_list created successfully";
+    } else {
+      echo "Error creating table: " . $conn->error;
+    }
+    echo "<br>";
+
+        // add sample books
     $books = [
         ['The Great Gatsby', 'F. Scott Fitzgerald', 'Fiction', 1925],
         ['To Kill a Mockingbird', 'Harper Lee', 'Fiction', 1960],
@@ -76,7 +95,6 @@ if ($conn->select_db("bookmarker")) {
       echo "Error creating admin user: " . $conn->error;
 }
 }
-    
-header(header: "Location: login.php");
+header("Location: login.php");
 exit();
 ?>

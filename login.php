@@ -1,5 +1,6 @@
 <?php
 include 'db.php';
+session_start();
 
 ?>
 <!DOCTYPE html>
@@ -29,7 +30,7 @@ include 'db.php';
                 </div>
 
                 <!-- Login button -->
-                <button type="submit" class="btn btn-primary">Login</button>
+                <button type="submit" name="login" class="btn btn-primary">Login</button>
             </form>
 
             <!-- "Register here" link -->
@@ -39,3 +40,16 @@ include 'db.php';
 
 </body>
 </html>
+
+<?php
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+if (isset($_POST["login"])) {
+    $username = $_POST ["username"];
+    $password = $_POST ["password"];
+    
+    header("Location: authenticate-user.php");
+    exit();
+
+}
+}
+?>
