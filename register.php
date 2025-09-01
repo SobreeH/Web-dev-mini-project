@@ -60,6 +60,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <!-- Register button -->
                 <button type="submit" class="btn btn-primary">Register</button>
             </form>
+            
 
         </div>
     </div>
