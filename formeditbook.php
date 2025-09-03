@@ -1,57 +1,37 @@
-<html>
-<head>
-    <meta charset="UTF-8">
-    <title>แก้ไขข้อมูล</title>
-</head>
-<body>
 <?php
+// Include your database connection file
+include "db.php";
 
-    $title = $_REQUEST['title'];
-    $author = $_REQUEST['author'];
-    $genre = $_REQUEST['genre'];
-    $publication_year = $_REQUEST['publication_year'];
-    $book_id =$_REQUEST['book_id'];
-    $before =$book_id;
-	
+// Get the book details from the URL parameters
+$book_id = $_GET['book_id'];
+$title = $_GET['title'];
+$author = $_GET['author'];
+$genre = $_GET['genre'];
+$publication_year = $_GET['publication_year'];
+$before =$book_id;
 
 ?>
-<form action="editbook.php">
-<center>
-<table >
-<?php
- echo "<caption><h2>แก้ไขข้อมูลนักศึกษา</h2></caption>
-  <tr>
- <td></td>
-  <td><input type='hidden' name='before' value='$book_id'></td>
-</tr>
- <tr>
- <td>Title</td>
-  <td><input type='text' name='title' value='$title'></td>
-</tr>
-  <tr>
-   <td>Author</td>
-    <td><input type='text' name='author' value='$author'></td>
-  </tr>
-  <tr>
-    <td>Genre</td>
-    <td><input type='text' name='genre' value='$genre'></td>
-  </tr>
-  <tr>
-    <td>Year</td>
-    <td><input type='text' name='publication_year' value='$publication_year'></td>
-  </tr>
-  <tr>
-    <td></td>
-    <td><input type='submit' value='แก้ไขข้อมูล'> <input type='reset' value='ยกเลิก'></td>
-  </tr>
-  <tr>
-    <td></td>
-    <td><a href='showuser.php'>[ย้อนกลับ]</a></td>
-  </tr>";
-  
-  ?>
-</table>
-</center>
-</form>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Book</title>
+</head>
+<body>
+    <center>
+        <h2>Edit Book</h2>
+        <form action="editbook.php" method="post">
+            <input type="hidden" name="book_id" value="<?php echo $book_id; ?>">
+
+            Title: <input type="text" name="title" value="<?php echo htmlspecialchars($title); ?>"><br><br>
+            Author: <input type="text" name="author" value="<?php echo htmlspecialchars($author); ?>"><br><br>
+            Genre: <input type="text" name="genre" value="<?php echo htmlspecialchars($genre); ?>"><br><br>
+            Publication Year: <input type="text" name="publication_year" value="<?php echo htmlspecialchars($publication_year); ?>"><br><br>
+
+            <input type="submit" value="Update Book">
+        </form>
+        <a href="showbook-admin.php">Cancel</a>
+    </center>
 </body>
 </html>

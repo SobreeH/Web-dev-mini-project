@@ -20,7 +20,7 @@ session_start();
                 ?>
             
             <h3 class="mb-5"><em> </em></h3>
-            <a class="btn btn-primary btn-xl" href="showbook-user.php" >Book table</a>
+            <a class="btn btn-primary btn-xl" href="showbook_user.php" >Book table</a>
             <a class="btn btn-primary btn-xl" href="show_reading_list.php" >Show Reading list</a>
             <form action="user-page.php" method="post">
                 <input type="submit" name="logout" value="Logout" ;>

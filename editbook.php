@@ -12,13 +12,12 @@ else {
     $author = $_REQUEST['author'];
     $genre = $_REQUEST['genre'];
     $publication_year = $_REQUEST['publication_year'];
+    $book_id = $_REQUEST['book_id'];
 	
-    $before=$_REQUEST['before'];
-
-    $sql = "UPDATE books SET title='$title', author='$author',genre='$genre', publication_year='$publication_year' WHERE book_id='$before'";
+    $sql = "UPDATE books SET title='$title', author='$author', genre='$genre', publication_year=$publication_year WHERE book_id=$book_id";
 
     if($conn->query($sql)===TRUE){
-     include "showbook.php";
+     header("Location:showbook_admin.php");
     }
     
 ?>

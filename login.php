@@ -42,7 +42,34 @@ if (isset($_GET['error'])) {
             <a href="register.php" class="text-primary mt-3">Don't have an account? Register here</a>
         </div>
     </div>
-
+<div> <H1>For testing purpose we will be using the usernames below as sample users and admin</H1>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Username</th>
+                    <th>Password</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>admin</td>
+                    <td>123456</td>
+                </tr>
+                <tr>
+                    <td>sobree</td>
+                    <td>123456</td>
+                </tr>
+                <tr>
+                    <td>boom</td>
+                    <td>123456</td>
+                </tr>
+                <tr>
+                    <td>sarinya</td>
+                    <td>123456</td>
+                </tr>
+            </tbody>
+        </table>
+</div>
 </body>
 </html>
 

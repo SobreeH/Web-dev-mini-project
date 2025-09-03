@@ -25,7 +25,7 @@
 
         if ($result -> num_rows > 0) {
         echo "<table border='1' align='center' cellpadding='10'>";
-        echo "<caption>User</caption>
+        echo "<caption>User: $username</caption>
         <tr>
         <th>title</th>
         <th>author</th>
@@ -39,14 +39,15 @@
             $genre = "&genre=".$row["genre"];
             $publication_year = "&publication_year=".$row["publication_year"]; 
             $status = "&status=".$row["status"];
+            $list_id = "&list_id=".$row["list_id"];
         echo "<tr>";
         echo "<td>".$row["title"]."</td> "; 
         echo "<td>".$row["author"]."</td> "; 
         echo "<td>".$row["genre"]."</td> ";  
         echo "<td>".$row["publication_year"] ."</td> ";
         echo "<td>".$row["status"]."</td>";
-        echo "<td><a href='deletelist.php?".$id."'>[edit]</a></td> ";
-        echo "<td><a href='deletelist.php?".$id."'>[delete]</a></td> ";
+        echo "<td><a href='formeditlist.php?".$list_id."'>[edit]</a></td> ";
+        echo "<td><a href='deletelist.php?".$list_id."'>[delete]</a></td> ";
         echo "</tr>";
         }
         echo "</table>";

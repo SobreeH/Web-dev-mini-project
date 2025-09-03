@@ -15,7 +15,7 @@ session_start();
         <div class="container px-4 px-lg-5 text-center">
             <h1 class="mb-1">Welcome to the BookMARKER pre-alpha</h1>
             <h3 class="mb-5"><em> </em></h3>
-            <a class="btn btn-primary btn-xl" href="showbook-admin.php" >Book table</a>
+            <a class="btn btn-primary btn-xl" href="showbook_admin.php" >Book table</a>
             <a class="btn btn-primary btn-xl" href="showuser.php" >User table</a>
         <form action="admin-page.php" method="post">
         <input type="submit" name="logout" value="Logout" ;>

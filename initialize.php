@@ -56,8 +56,8 @@ if ($conn->select_db("bookmarker")) {
         book_id INT(6) UNSIGNED,
         status VARCHAR(20),
         added_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-        FOREIGN KEY (user_id) REFERENCES users(user_id),
-        FOREIGN KEY (book_id) REFERENCES books(book_id)
+        FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE,
+        FOREIGN KEY (book_id) REFERENCES books(book_id) ON DELETE CASCADE
         )";
     
     // create table reading_list
